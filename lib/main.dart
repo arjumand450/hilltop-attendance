@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'populate.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'models/staff.dart';
+import 'models/attendance_record.dart';
+
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(StaffAdapter());
+  Hive.registerAdapter(AttendanceRecordAdapter());
+  final staffBox = await Hive.openBox<Staff>('staff');
+  await Hive.openBox<AttendanceRecord>('attendance');
+  await populateStaff(staffBox);
   runApp(const MyApp());
 }
 
@@ -11,8 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Provider package pubspec.yaml mein add hai.
-    // Task 3 mein yahan MultiProvider lagega (login state ke liye).
+    // Task 3: MultiProvider goes here (login state)
     return MaterialApp(
       title: 'Hilltop Attendance',
       debugShowCheckedModeBanner: false,

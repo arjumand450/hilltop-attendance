@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hilltop_attendance/models/staff.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,6 +30,19 @@ class HomePage extends StatelessWidget {
               ),
               onPressed: () => Navigator.pushNamed(context, '/login'), 
               child: Text("Login")),
+
+              SizedBox(height: 16),
+SizedBox(
+  height: 200,
+  child: ValueListenableBuilder<Box<Staff>>(
+    valueListenable: Hive.box<Staff>('staff').listenable(),
+    builder: (context, box, _) => ListView(
+      children: box.values
+          .map((s) => ListTile(title: Text(s.name), subtitle: Text(s.role)))
+          .toList(),
+    ),
+  ),
+),
           ],
         ),
         ),
