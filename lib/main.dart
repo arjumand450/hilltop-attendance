@@ -3,6 +3,8 @@ import 'populate.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'models/staff.dart';
 import 'models/attendance_record.dart';
+import 'package:provider/provider.dart';
+import 'providers/auth_provider.dart';
 
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
@@ -23,20 +25,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Task 3: MultiProvider goes here (login state)
-    return MaterialApp(
-      title: 'Hilltop Attendance',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        scaffoldBackgroundColor: Colors.white,
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (_) => AuthProvider(),
+      child: MaterialApp(
+        title: 'Hilltop Attendance',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          scaffoldBackgroundColor: Colors.white,
+          useMaterial3: true,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (_) => const HomePage(),
+          '/login': (_) => const LoginPage(),
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (_) => const HomePage(),
-        '/login': (_) => const LoginPage(),
-      },
     );
   }
 }
