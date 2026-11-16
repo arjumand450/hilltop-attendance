@@ -22,3 +22,8 @@ The script writes to a local `hive_data/` folder (ignored by git), while the app
 ## Dependencies
 - provider
 - hive, hive_flutter, hive_generator, build_runner
+
+## Mock login
+Test users are in `assets/users.json`. Example: `ayesha@hilltop.com` / `ayesha123`.
+Authentication state is managed with Provider (`lib/providers/auth_provider.dart`).
+See `decision_log.md` for why Provider was chosen over Riverpod.
