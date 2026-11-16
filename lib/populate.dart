@@ -9,7 +9,7 @@ final _sampleStaff = [
   Staff(id: 'S005', name: 'Hina Raza', role: 'Receptionist'),
 ];
 
-/// Adds sample staff only if the box is empty, so restarts never duplicate.
+
 Future<void> populateStaff(Box<Staff> box) async {
   if (box.isNotEmpty) return;
   for (final s in _sampleStaff) {

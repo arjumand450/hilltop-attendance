@@ -20,7 +20,7 @@ class AuthProvider extends ChangeNotifier {
     _users = List<Map<String, dynamic>>.from(data['users'] as List);
   }
 
-  /// Returns true if the email and password match a user in users.json.
+
   Future<bool> login(String email, String password) async {
     _isLoading = true;
     _error = null;

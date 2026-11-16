@@ -32,9 +32,12 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   OutlinedButton(
-                    onPressed: () => context.read<AuthProvider>().logout(),
-                    child: const Text('Logout'),
-                  ),
+  onPressed: () {
+    context.read<AuthProvider>().logout();
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+  },
+  child: const Text('Logout'),
+),
                 ] else ...[
                   const SizedBox(height: 16),
                   ElevatedButton(

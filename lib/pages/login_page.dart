@@ -30,11 +30,11 @@ class _LoginPageState extends State<LoginPage> {
       _passwordController.text,
     );
 
-    // The user may have left the screen while we were waiting.
+   
     if (!mounted) return;
 
     if (ok) {
-      Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
     }
   }
 
