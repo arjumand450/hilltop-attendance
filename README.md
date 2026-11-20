@@ -27,3 +27,9 @@ The script writes to a local `hive_data/` folder (ignored by git), while the app
 Test users are in `assets/users.json`. Example: `ayesha@hilltop.com` / `ayesha123`.
 Authentication state is managed with Provider (`lib/providers/auth_provider.dart`).
 See `decision_log.md` for why Provider was chosen over Riverpod.
+
+## Check-in screen
+The check-in screen lists all staff from the Hive `staff` box. Pressing "Check-in" saves an
+AttendanceRecord (staffId, date, checkInTime) in the Hive `attendance` box and updates the
+"Present today" counter through Provider (`lib/providers/attendance_provider.dart`).
+It works fully offline, and records stay after the app is closed and reopened.
