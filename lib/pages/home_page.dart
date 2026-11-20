@@ -30,6 +30,18 @@ class HomePage extends StatelessWidget {
                     'Welcome, ${auth.userName}!',
                     style: const TextStyle(fontSize: 18),
                   ),
+
+                                  const SizedBox(height: 24),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      minimumSize: const Size(200, 48),
+                    ),
+                    onPressed: () => Navigator.pushNamed(context, '/checkin'),
+                    child: const Text('Staff Check-in'),
+                  ),
+
                   const SizedBox(height: 24),
                   OutlinedButton(
   onPressed: () {
