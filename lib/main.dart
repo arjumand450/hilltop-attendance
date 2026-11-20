@@ -5,9 +5,10 @@ import 'models/staff.dart';
 import 'models/attendance_record.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_provider.dart';
-
+import 'providers/attendance_provider.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
+import 'pages/check_in_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,8 +26,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AuthProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(
+          create: (_) => AttendanceProvider(
+            Hive.box<Staff>('staff'),
+            Hive.box<AttendanceRecord>('attendance'),
+          ),
+        ),
+      ],
       child: MaterialApp(
         title: 'Hilltop Attendance',
         debugShowCheckedModeBanner: false,
@@ -36,9 +45,10 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         initialRoute: '/login',
-        routes: {
+                routes: {
           '/login': (_) => const LoginPage(),
           '/home': (_) => const HomePage(),
+          '/checkin': (_) => const CheckInPage(),
         },
       ),
     );
