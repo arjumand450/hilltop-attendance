@@ -45,3 +45,15 @@ The report screen groups attendance records by date and shows a 7-day bar chart 
 "Export PDF" saves `report_YYYYMMDD.pdf` to the device's Downloads folder.
 Data load time is measured with a Stopwatch and recorded in `performance_log.txt`.
 See `security_review.md` for the validation and storage checks.
+
+## Live demo
+https://arjumand450.github.io/hilltop-attendance/
+
+Test login: `ayesha@hilltop.com` / `ayesha123`
+
+**Load time:** 2.50 s to finish loading (Chrome DevTools, Network tab, cache disabled, first load).
+
+## Deployment
+Every push to `main` runs `.github/workflows/flutter_web.yml`, which builds
+Flutter web and publishes it to the `gh-pages` branch (served by GitHub Pages).
+
