@@ -1,0 +1,7 @@
+{
+  "users": [
+    { "name": "Ayesha Khan", "email": "ayesha@hilltop.com", "password": "ayesha123" },
+    { "name": "Bilal Ahmed", "email": "bilal@hilltop.com", "password": "bilal123" },
+    { "name": "Sana Malik", "email": "sana@hilltop.com", "password": "sana123" }
+  ]
+}
