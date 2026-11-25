@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import '../models/attendance_record.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DayTotal {
   final DateTime day;
@@ -20,7 +21,7 @@ class ReportProvider extends ChangeNotifier {
 
   int get todayCount => days.isEmpty ? 0 : days.last.count;
 
-  /// Groups records by date for the last 7 days (oldest first, today last).
+  
   Future<void> load() async {
     isLoading = true;
     notifyListeners();
@@ -34,7 +35,7 @@ class ReportProvider extends ChangeNotifier {
     }
     for (final r in _box.values) {
       final key = DateTime(r.date.year, r.date.month, r.date.day);
-      sets[key]?.add(r.staffId); // ignores dates outside the 7-day window
+      sets[key]?.add(r.staffId); 
     }
     days = sets.entries.map((e) => DayTotal(e.key, e.value.length)).toList();
 

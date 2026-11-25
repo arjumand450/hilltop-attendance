@@ -9,13 +9,13 @@ class AttendanceProvider extends ChangeNotifier {
 
   AttendanceProvider(this._staffBox, this._attendanceBox);
 
-  /// All staff, read from the Hive staff box.
+  
   List<Staff> get staff => _staffBox.values.toList();
 
   bool _isSameDay(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;
 
-  /// Today's record for one staff member, or null if not checked in yet.
+  
   AttendanceRecord? todayRecordFor(String staffId) {
     final now = DateTime.now();
     for (final r in _attendanceBox.values) {
@@ -26,7 +26,7 @@ class AttendanceProvider extends ChangeNotifier {
 
   bool hasCheckedInToday(String staffId) => todayRecordFor(staffId) != null;
 
-  /// Number of different staff members who checked in today.
+  
   int get presentToday {
     final now = DateTime.now();
     return _attendanceBox.values
@@ -37,7 +37,7 @@ class AttendanceProvider extends ChangeNotifier {
   }
 
   Future<void> checkIn(Staff s) async {
-    if (hasCheckedInToday(s.id)) return; // no double check-in
+    if (hasCheckedInToday(s.id)) return; 
     final now = DateTime.now();
     await _attendanceBox.add(
       AttendanceRecord(
@@ -46,6 +46,6 @@ class AttendanceProvider extends ChangeNotifier {
         checkInTime: now,
       ),
     );
-    notifyListeners(); // counter and buttons update instantly
+    notifyListeners(); 
   }
 }

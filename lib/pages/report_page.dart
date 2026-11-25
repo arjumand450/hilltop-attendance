@@ -16,7 +16,7 @@ class _ReportPageState extends State<ReportPage> {
   @override
   void initState() {
     super.initState();
-    // Load after the first frame so notifyListeners is not called during build.
+   
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ReportProvider>().load();
     });
@@ -112,16 +112,16 @@ class _ReportPageState extends State<ReportPage> {
                   ElevatedButton.icon(
                     icon: const Icon(Icons.picture_as_pdf),
                     label: const Text('Export PDF'),
-                    onPressed: () async {
+                                        onPressed: () async {
                       final messenger = ScaffoldMessenger.of(context);
                       try {
-                        final file = await exportReportPdf(report.days);
+                        final name = await exportReportPdf(report.days);
                         messenger.showSnackBar(
-                          SnackBar(content: Text('Saved: ${file.path}')),
+                          SnackBar(content: Text('Exported: $name')),
                         );
                       } catch (e) {
                         messenger.showSnackBar(
-                          SnackBar(content: Text('Could not save PDF: $e')),
+                          SnackBar(content: Text('Could not export PDF: $e')),
                         );
                       }
                     },
