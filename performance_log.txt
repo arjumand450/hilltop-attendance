@@ -1,0 +1,4 @@
+Performance log - Attendance report load time
+Measured with Dart Stopwatch on TECNO KL6 (debug mode)
+
+2026-11-24 - Load time: 0.01 s

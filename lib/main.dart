@@ -9,6 +9,8 @@ import 'providers/attendance_provider.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 import 'pages/check_in_page.dart';
+import 'providers/report_provider.dart';
+import 'pages/report_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,11 +31,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(
-          create: (_) => AttendanceProvider(
-            Hive.box<Staff>('staff'),
-            Hive.box<AttendanceRecord>('attendance'),
-          ),
+                ChangeNotifierProvider(
+          create: (_) => ReportProvider(Hive.box<AttendanceRecord>('attendance')),
         ),
       ],
       child: MaterialApp(
@@ -45,10 +44,11 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         initialRoute: '/login',
-                routes: {
+                        routes: {
           '/login': (_) => const LoginPage(),
           '/home': (_) => const HomePage(),
           '/checkin': (_) => const CheckInPage(),
+          '/report': (_) => const ReportPage(),
         },
       ),
     );

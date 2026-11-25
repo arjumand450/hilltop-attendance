@@ -42,6 +42,15 @@ class HomePage extends StatelessWidget {
                     child: const Text('Staff Check-in'),
                   ),
 
+                                    const SizedBox(height: 12),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(200, 48),
+                    ),
+                    onPressed: () => Navigator.pushNamed(context, '/report'),
+                    child: const Text('Attendance Report'),
+                  ),
+
                   const SizedBox(height: 24),
                   OutlinedButton(
   onPressed: () {

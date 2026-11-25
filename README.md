@@ -33,3 +33,15 @@ The check-in screen lists all staff from the Hive `staff` box. Pressing "Check-i
 AttendanceRecord (staffId, date, checkInTime) in the Hive `attendance` box and updates the
 "Present today" counter through Provider (`lib/providers/attendance_provider.dart`).
 It works fully offline, and records stay after the app is closed and reopened.
+
+## Attendance report
+The report screen groups attendance records by date and shows a 7-day bar chart (fl_chart).
+"Export PDF" saves `report_YYYYMMDD.pdf` to the device's Downloads folder.
+Data load time is measured with a Stopwatch and recorded in `performance_log.txt`.
+See `security_review.md` for the validation and storage checks.
+
+## Attendance report
+The report screen groups attendance records by date and shows a 7-day bar chart (fl_chart).
+"Export PDF" saves `report_YYYYMMDD.pdf` to the device's Downloads folder.
+Data load time is measured with a Stopwatch and recorded in `performance_log.txt`.
+See `security_review.md` for the validation and storage checks.
